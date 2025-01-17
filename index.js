@@ -2,6 +2,11 @@ const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"
 "/"];
 
 let passwordEl = document.getElementById("password-el");
+let lengthSt = document.getElementById("length");
+let lowerSt = document.getElementById("lower");
+let upperSt = document.getElementById("upper");
+let numSt = document.getElementById("num");
+let specialSt = document.getElementById("special");
 
 function getRandomElement(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
@@ -20,9 +25,23 @@ function filterCharacters(input, includeLowercase, includeUppercase = true, incl
     );
 }
 
-function generatePassword(length = 16) {
+function getSettings() {
+    let settings = {
+        length: lengthSt.valueAsNumber,
+        lower: lowerSt.checked,
+        upper: upperSt.checked,
+        num: numSt.checked,
+        special: specialSt.checked,
+    }
+    return settings;
+}
+
+function generatePassword() {
+    let settings = getSettings();
     passwordEl.textContent = "";
-    for (let i = 0; i < length; i++){
-        passwordEl.textContent += getRandomElement(filterCharacters(characters, false, false, false, true));
+    if (settings.length > 0 && (settings.lower || settings.upper || settings.num || settings.special)) {
+        for (let i = 0; i < settings.length; i++){
+            passwordEl.textContent += getRandomElement(filterCharacters(characters, settings.lower, settings.upper, settings.num, settings.special));
+        }
     }
 }
