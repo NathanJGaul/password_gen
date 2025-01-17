@@ -7,10 +7,22 @@ function getRandomElement(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function generatePassword() {
-    const length = 16;
+function filterCharacters(input, includeLowercase, includeUppercase = true, includeNumbers = true, includeSpecial = true) {
+    const regexMap = {
+        lowercase: includeLowercase ? /[a-z]/ : null,
+        uppercase: includeUppercase ? /[A-Z]/ : null,
+        numbers: includeNumbers ? /[0-9]/ : null,
+        special: includeSpecial ? /[^a-zA-Z0-9]/ : null
+    };
+
+    return input.filter(char =>
+        Object.values(regexMap).some(regex => regex && regex.test(char))
+    );
+}
+
+function generatePassword(length = 16) {
     passwordEl.textContent = "";
     for (let i = 0; i < length; i++){
-        passwordEl.textContent += getRandomElement(characters);
+        passwordEl.textContent += getRandomElement(filterCharacters(characters, false, false, false, true));
     }
 }
