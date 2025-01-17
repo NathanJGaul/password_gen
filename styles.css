@@ -75,6 +75,19 @@ hr {
     align-items: center;
 }
 
-#password-el {
-    /* margin: auto; */
+.settings-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 34.5px;
+    margin: 0 0 15px 0;
+}
+
+input[type=number] {
+    border: none;
+    background-color: #273549;
+    color: #FFFFFF;
+    width: 34.5px;
+    height: 20px;
+    border-radius: 6px;
 }

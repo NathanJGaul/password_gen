@@ -20,6 +20,28 @@
                 <span>random password</span>
             </h1>
             <p id="subtitle">Never use an insecure password again.</p>
+            <div class="settings-container">
+                <label >
+                    Length:
+                    <input type="number" name="length" id="length" value="16">
+                </label>
+                <label class="checkbox-control">
+                    <input type="checkbox" name="lower" />
+                    Lower
+                </label>
+                <label class="checkbox-control">
+                    <input type="checkbox" name="lower" />
+                    Upper
+                </label>
+                <label class="checkbox-control">
+                    <input type="checkbox" name="lower" />
+                    Num
+                </label>
+                <label class="checkbox-control">
+                    <input type="checkbox" name="lower" />
+                    Special
+                </label>
+            </div>
             <button id="btn-gen" onclick="generatePassword()">
                 Generate password
             </button>
